@@ -1,0 +1,226 @@
+
+#main-wrapper .topbar  {
+    background: #9ec4d1
+}
+
+#main-wrapper .left-sidebar {
+    background: #c7c7c1
+}
+
+#main-wrapper .left-sidebar .sidebar-nav ul {
+    background: #c7c7c1
+}
+
+#main-wrapper .left-sidebar .sidebar-nav ul .sidebar-item .sidebar-link {
+    color: #212529
+}
+
+#main-wrapper .left-sidebar .sidebar-nav ul .sidebar-item .sidebar-link i {
+    color: #4F5467
+}
+
+#main-wrapper {
+    width: 100%;
+    overflow: hidden
+}
+
+#main-wrapper .page-wrapper {
+    margin-left: 200px
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: #ededed
+}
+
+html {
+    position: relative;
+    min-height: 92%
+}
+
+.topbar {
+    position: relative;
+    z-index: 50;
+    -webkit-box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.05);
+    background: #fff;
+    height: 64px
+}
+
+.topbar .navbar-collapse {
+    padding: 0px 10px 0 0
+}
+
+.topbar .top-navbar {
+    min-height: 64px;
+    padding: 0px
+}
+
+.topbar .top-navbar .dropdown-toggle:after {
+    display: none
+}
+
+.topbar .top-navbar .navbar-header {
+    line-height: 64px
+}
+
+.topbar .top-navbar .navbar-header .navbar-brand {
+    display: flex;
+    margin-left: 42%;
+    font-size: 30px;
+    font-family: kaiti;
+}
+
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
+    padding: 0px 15px;
+    font-size: 0.875rem;
+    line-height: 64px;
+    height: 64px
+}
+
+.topbar .top-navbar .navbar-nav > .nav-item:hover {
+    background: rgba(0, 0, 0, 0.05)
+}
+
+.topbar .mailbox, .topbar .user-dd {
+    min-width: 280px
+}
+
+.topbar .nav-toggler, .topbar .topbartoggler {
+    color: #fff;
+    padding: 0 15px
+}
+
+.search-box .app-search {
+    z-index: 110;
+    width: 100%;
+    top: -1px;
+    -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    display: none;
+    left: 0px
+}
+
+.topbar .dropdown-menu {
+    padding-top: 0px;
+    border: 0px;
+    -webkit-box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1)
+}
+
+.topbar .dropdown-menu .with-arrow {
+    position: absolute;
+    height: 10px;
+    overflow: hidden;
+    width: 40px;
+    top: -10px
+}
+
+.topbar .dropdown-menu .with-arrow > span {
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    top: 3px;
+    left: 15px;
+    position: absolute;
+    content: "";
+    -moz-border-radius: 6px 0 0 0;
+    border-radius: 6px 0 0 0
+}
+
+.topbar .dropdown-menu.dropdown-menu-right .with-arrow {
+    right: 0px
+}
+
+.topbar .dropdown-menu.dropdown-menu-right .with-arrow > span {
+    right: 20px;
+    left: auto
+}
+
+.page-breadcrumb {
+    padding: 20px 20px 0 20px
+}
+
+.page-breadcrumb .page-title {
+    margin-bottom: 0px
+}
+
+.page-breadcrumb .breadcrumb {
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    font-size: 16px
+}
+
+.page-breadcrumb .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
+    font-family: themify;
+    color: #ced4da;
+    font-size: 11px
+}
+
+.left-sidebar {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    top: 0px;
+    z-index: 10;
+    padding-top: 64px;
+    background: #fff;
+    -webkit-box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08)
+}
+
+.scroll-sidebar {
+    height: calc(100% - 20px);
+    position: relative
+}
+
+.sidebar-nav ul .sidebar-item {
+    margin-left: 18px;
+    width: 180px
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link {
+    color: #fff;
+    padding: 14px 15px;
+    display: flex;
+    line-height: 25px;
+    opacity: 0.6
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+    font-style: normal;
+    width: 35px;
+    line-height: 25px;
+    font-size: 23px;
+    color: #fff;
+    display: inline-block;
+    text-align: center
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active, .sidebar-nav ul .sidebar-item .sidebar-link:hover {
+    border-left:5px solid #ffb601;
+    opacity: 1
+}
+
+.sidebar-nav ul .sidebar-item.selected > .sidebar-link {
+    opacity: 1
+}
+
+.sidebar-nav ul .sidebar-item .first-level {
+    padding: 0 0 10px 0
+}
+
+.sidebar-nav ul .sidebar-item .first-level .sidebar-item.active .sidebar-link {
+
+    opacity: 1
+}
+
+.sidebar-nav ul .sidebar-item .first-level .sidebar-item .sidebar-link {
+    padding: 10px 15px
+}
+
+.sidebar-nav ul .sidebar-item .first-level .sidebar-item .sidebar-link i {
+    font-size: 14px
+}
