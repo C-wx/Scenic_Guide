@@ -17,9 +17,9 @@ public class ImageService {
     @Autowired
     private ImageMapper imageMapper;
 
-    public List<Image> getList(Integer id) {
+    public List<Image> getList(Integer id,String type) {
         ImageExample imageExample = new ImageExample();
-        imageExample.createCriteria().andAttracttionidEqualTo(id);
+        imageExample.createCriteria().andOriginidEqualTo(id).andOrigintypeEqualTo(type);
         return imageMapper.selectByExample(imageExample);
     }
 

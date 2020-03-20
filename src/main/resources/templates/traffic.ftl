@@ -47,6 +47,22 @@
             <div class="layui-row layui-form">
                 <div class="layui-card">
                     <div class="layui-card-body" style="padding-top: 25px;">
+                        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                            <div id="search_area">
+                                <label>景点名称：</label>
+                                <div class="layui-inline">
+                                    <input class="layui-input" id="title" autocomplete="off">
+                                </div>
+                                <span style="margin-left: 50px">
+                                    <button class="layui-btn layuiadmin-btn-forum-list" data-type="keyLike">
+                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                    </button>
+                                    <button class="layui-btn layui-btn-primary" data-type="reload">
+                                        <i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
                         <table id="showTable" lay-filter="showTable"></table>
                     </div>
                 </div>

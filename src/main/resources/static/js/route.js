@@ -93,6 +93,45 @@ layui.use(['form', 'table'], function () {
             });
         }
     });
+
+    /**
+     * 监听搜索事件
+     */
+    $('button[data-type]').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+    var active = {
+        keyLike: function () {                          //关键词模糊搜索
+            const startid = $('#startid').val();
+            const endid = $('#endid').val();
+            //执行重载
+            table.reload('showTable', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {
+                    startid: startid,
+                    endid: endid
+                }
+            });
+        },
+        reload: function () {                           //重置加载页面
+            $('#startid').val("");
+            $('#endid').val("");
+            form.render('select')
+            table.reload('showTable', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {
+                    startid: $('#startid').val(),
+                    endid: $('#endid').val()
+                }
+            });
+        }
+    };
+
     /**
      * 添加景点
      */

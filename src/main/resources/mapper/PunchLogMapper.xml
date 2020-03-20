@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="guide.mapper.ImageMapper">
-  <resultMap id="BaseResultMap" type="guide.bean.Image">
+<mapper namespace="guide.mapper.PunchLogMapper">
+  <resultMap id="BaseResultMap" type="guide.bean.PunchLog">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="originType" jdbcType="VARCHAR" property="origintype" />
-    <result column="originId" jdbcType="INTEGER" property="originid" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="wxId" jdbcType="VARCHAR" property="wxid" />
+    <result column="attractionId" jdbcType="INTEGER" property="attractionid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,16 +65,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, originType, originId, url
+    id, wxId, attractionId
   </sql>
-  <select id="selectByExample" parameterType="guide.bean.ImageExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="guide.bean.PunchLogExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from images
+    from punchlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,70 +85,59 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from images
+    from punchlog
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from images
+    delete from punchlog
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="guide.bean.ImageExample">
-    delete from images
+  <delete id="deleteByExample" parameterType="guide.bean.PunchLogExample">
+    delete from punchlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="guide.bean.Image" useGeneratedKeys="true">
-    insert into images (originType, originId, url
-      )
-    values (#{origintype,jdbcType=VARCHAR}, #{originid,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}
-      )
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="guide.bean.PunchLog" useGeneratedKeys="true">
+    insert into punchlog (wxId, attractionId)
+    values (#{wxid,jdbcType=VARCHAR}, #{attractionid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="guide.bean.Image" useGeneratedKeys="true">
-    insert into images
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="guide.bean.PunchLog" useGeneratedKeys="true">
+    insert into punchlog
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="origintype != null">
-        originType,
+      <if test="wxid != null">
+        wxId,
       </if>
-      <if test="originid != null">
-        originId,
-      </if>
-      <if test="url != null">
-        url,
+      <if test="attractionid != null">
+        attractionId,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="origintype != null">
-        #{origintype,jdbcType=VARCHAR},
+      <if test="wxid != null">
+        #{wxid,jdbcType=VARCHAR},
       </if>
-      <if test="originid != null">
-        #{originid,jdbcType=INTEGER},
-      </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
+      <if test="attractionid != null">
+        #{attractionid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="guide.bean.ImageExample" resultType="java.lang.Long">
-    select count(*) from images
+  <select id="countByExample" parameterType="guide.bean.PunchLogExample" resultType="java.lang.Long">
+    select count(*) from punchlog
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update images
+    update punchlog
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.origintype != null">
-        originType = #{record.origintype,jdbcType=VARCHAR},
+      <if test="record.wxid != null">
+        wxId = #{record.wxid,jdbcType=VARCHAR},
       </if>
-      <if test="record.originid != null">
-        originId = #{record.originid,jdbcType=INTEGER},
-      </if>
-      <if test="record.url != null">
-        url = #{record.url,jdbcType=VARCHAR},
+      <if test="record.attractionid != null">
+        attractionId = #{record.attractionid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -157,35 +145,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update images
+    update punchlog
     set id = #{record.id,jdbcType=INTEGER},
-      originType = #{record.origintype,jdbcType=VARCHAR},
-      originId = #{record.originid,jdbcType=INTEGER},
-      url = #{record.url,jdbcType=VARCHAR}
+      wxId = #{record.wxid,jdbcType=VARCHAR},
+      attractionId = #{record.attractionid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="guide.bean.Image">
-    update images
+  <update id="updateByPrimaryKeySelective" parameterType="guide.bean.PunchLog">
+    update punchlog
     <set>
-      <if test="origintype != null">
-        originType = #{origintype,jdbcType=VARCHAR},
+      <if test="wxid != null">
+        wxId = #{wxid,jdbcType=VARCHAR},
       </if>
-      <if test="originid != null">
-        originId = #{originid,jdbcType=INTEGER},
-      </if>
-      <if test="url != null">
-        url = #{url,jdbcType=VARCHAR},
+      <if test="attractionid != null">
+        attractionId = #{attractionid,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="guide.bean.Image">
-    update images
-    set originType = #{origintype,jdbcType=VARCHAR},
-      originId = #{originid,jdbcType=INTEGER},
-      url = #{url,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="guide.bean.PunchLog">
+    update punchlog
+    set wxId = #{wxid,jdbcType=VARCHAR},
+      attractionId = #{attractionid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

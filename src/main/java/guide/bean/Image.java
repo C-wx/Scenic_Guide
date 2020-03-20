@@ -3,7 +3,9 @@ package guide.bean;
 public class Image {
     private Integer id;
 
-    private Integer attracttionid;
+    private String origintype;
+
+    private Integer originid;
 
     private String url;
 
@@ -15,12 +17,20 @@ public class Image {
         this.id = id;
     }
 
-    public Integer getAttracttionid() {
-        return attracttionid;
+    public String getOrigintype() {
+        return origintype;
     }
 
-    public void setAttracttionid(Integer attracttionid) {
-        this.attracttionid = attracttionid;
+    public void setOrigintype(String origintype) {
+        this.origintype = origintype == null ? null : origintype.trim();
+    }
+
+    public Integer getOriginid() {
+        return originid;
+    }
+
+    public void setOriginid(Integer originid) {
+        this.originid = originid;
     }
 
     public String getUrl() {

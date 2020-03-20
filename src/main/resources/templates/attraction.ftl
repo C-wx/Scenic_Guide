@@ -51,7 +51,7 @@
                             <div id="search_area">
                                 <label>景点名称：</label>
                                 <div class="layui-inline">
-                                    <input class="layui-input" id="name" autocomplete="off">
+                                    <input class="layui-input" id="title" autocomplete="off">
                                 </div>
                                 <span style="margin-left: 50px">
                                     <button class="layui-btn layuiadmin-btn-forum-list" data-type="keyLike">

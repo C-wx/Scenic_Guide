@@ -103,25 +103,25 @@ layui.use(['form', 'table'], function () {
     });
     var active = {
         keyLike: function () {                          //关键词模糊搜索
-            const name = $('#name');
+            const title = $('#title');
             //执行重载
-            table.reload('productRecycleTable', {
+            table.reload('showTable', {
                 page: {
                     curr: 1 //重新从第 1 页开始
                 }
                 , where: {
-                    name: name.val()
+                    title: title.val()
                 }
             });
         },
         reload: function () {                           //重置加载页面
-            $('#name').val("");
-            table.reload('productRecycleTable', {
+            $('#title').val("");
+            table.reload('showTable', {
                 page: {
                     curr: 1 //重新从第 1 页开始
                 }
                 , where: {
-                    name: $('#name').val()
+                    title: $('#title').val()
                 }
             });
         }

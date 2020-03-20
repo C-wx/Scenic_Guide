@@ -47,7 +47,38 @@
             <div class="layui-row layui-form">
                 <div class="layui-card">
                     <div class="layui-card-body" style="padding-top: 25px;">
-                        <button class="layui-btn layui-btn-danger" type="button" onclick="doAdd()">录入路线</button>
+                        <div class="layui-form layui-card-header">
+                            <div id="search_area" >
+                                <label>起点名称：</label>
+                                <div class="layui-inline">
+                                    <select name="startid" id="startid">
+                                        <option value="">请选择</option>
+                                        <#list attractionList as attraction>
+                                            <option value="${attraction.id}">${attraction.title}</option>
+                                        </#list>
+                                    </select>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>终点名称：</label>
+                                <div class="layui-inline">
+                                    <select name="endid" id="endid">
+                                        <option value="">请选择</option>
+                                        <#list attractionList as attraction>
+                                            <option value="${attraction.id}">${attraction.title}</option>
+                                        </#list>
+                                    </select>
+                                </div>
+                                <span style="margin-left: 50px">
+                                    <button class="layui-btn layuiadmin-btn-forum-list" data-type="keyLike">
+                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                    </button>
+                                    <button class="layui-btn layui-btn-primary" data-type="reload">
+                                        <i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i>
+                                    </button>
+                                <button class="layui-btn layui-btn-danger" type="button" onclick="doAdd()">录入路线</button>
+                                </span>
+                            </div>
+                        </div>
                         <table id="showTable" lay-filter="showTable"></table>
                     </div>
                 </div>

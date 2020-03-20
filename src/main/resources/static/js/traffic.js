@@ -42,6 +42,39 @@ layui.use(['form', 'table'], function () {
 
 
     /**
+     * 监听搜索事件
+     */
+    $('button[data-type]').on('click', function () {
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+    var active = {
+        keyLike: function () {                          //关键词模糊搜索
+            const title = $('#title');
+            //执行重载
+            table.reload('showTable', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {
+                    title: title.val()
+                }
+            });
+        },
+        reload: function () {                           //重置加载页面
+            $('#title').val("");
+            table.reload('showTable', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: {
+                    title: $('#title').val()
+                }
+            });
+        }
+    };
+
+    /**
      * 创建监听工具
      */
     table.on('tool(showTable)', function (obj) {

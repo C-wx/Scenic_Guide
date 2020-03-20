@@ -21,12 +21,24 @@ public class Attraction {
 
     private List<Image> imageList;      //图片列表
 
+    private List<Sharing> sharingList;  //当前景点下的说说
+
     private String type;  //操作类型
 
-    /**显示框位置*/
+    private Boolean hidden;   //是否显示
+
+    private Boolean like;       //是否已收藏
+
+    private Boolean punch;      //是否已打卡
+
+    /**
+     * 显示框位置
+     */
     private String frameTop;
     private String frameLeft;
-    /**显示点位置*/
+    /**
+     * 显示点位置
+     */
     private String pointLeft;
     private String pointTop;
 
@@ -140,5 +152,37 @@ public class Attraction {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
+
+    public Boolean getLike() {
+        return like;
+    }
+
+    public void setLike(Boolean like) {
+        this.like = like;
+    }
+
+    public Boolean getPunch() {
+        return punch;
+    }
+
+    public void setPunch(Boolean punch) {
+        this.punch = punch;
+    }
+
+    public List<Sharing> getSharingList() {
+        return sharingList;
+    }
+
+    public void setSharingList(List<Sharing> sharingList) {
+        this.sharingList = sharingList;
     }
 }

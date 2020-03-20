@@ -2,11 +2,9 @@ package guide.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import guide.bean.Attraction;
-import guide.bean.Image;
+import guide.bean.*;
 import guide.dto.Result;
-import guide.service.AttractionService;
-import guide.service.ImageService;
+import guide.service.*;
 import guide.utils.QiniuCloudUtil;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,6 +30,18 @@ public class AttractionController {
 
     @Autowired
     private ImageService imageService;
+
+    @Autowired
+    private FavoriteService favoriteService;
+
+    @Autowired
+    private PunchLogService punchLogService;
+
+    @Autowired
+    private SharingService sharingService;
+
+    @Autowired
+    private UserService userService;
 
     /**
      * 跳转景点管理页
@@ -54,9 +63,10 @@ public class AttractionController {
     public Object attractionList(@RequestParam(value = "current", defaultValue = "1") Integer pn,
                                  @RequestParam(value = "size", defaultValue = "10") Integer size,
                                  @RequestParam(value = "sort", defaultValue = "id") String sort,
-                                 @RequestParam(value = "order", defaultValue = "desc") String order) {
+                                 @RequestParam(value = "order", defaultValue = "desc") String order,
+                                 @RequestParam(value = "title", defaultValue = "%") String title) {
         PageHelper.startPage(pn, size, sort + " " + order);     //pn:页码  size：页大小
-        List<Attraction> attractionList = attractionService.getList();
+        List<Attraction> attractionList = attractionService.getList(title);
         PageInfo pageInfo = new PageInfo(attractionList, 10);
         return Result.layuiTable(pageInfo.getTotal(), pageInfo.getList());
     }
@@ -69,7 +79,7 @@ public class AttractionController {
     public String toManageAttraction(Integer id, Model model) {
         if (id != null) {
             Attraction attraction = attractionService.getOne(id);
-            List<Image> imageList = imageService.getList(id);
+            List<Image> imageList = imageService.getList(id, "attraction");
             attraction.setImageList(imageList);     //设置图片列表
             if (StringUtils.isNotBlank(attraction.getLocation())) {
                 String frameTop = attraction.getLocation().split(";")[0].split(":")[1].split("r")[0];
@@ -132,7 +142,8 @@ public class AttractionController {
                     String imageName = UUID.randomUUID().toString();
                     String url = QiniuCloudUtil.put64image(bytes, imageName);
                     Image image = new Image();
-                    image.setAttracttionid(attraction.getId());
+                    image.setOriginid(attraction.getId());
+                    image.setOrigintype("attraction");
                     image.setUrl(url);
                     imageService.addImage(image);
                 } catch (Exception e) {
@@ -156,10 +167,110 @@ public class AttractionController {
         return Result.success();
     }
 
+    /**
+     * @Explain 跳转更新人流量页面
+     */
     @RequestMapping("/toUpdateTraffic")
     public String toUpdateTraffic(Integer id, Model model) {
         Attraction attraction = attractionService.getOne(id);
         model.addAttribute("attraction", attraction);
         return "manageTraffic";
+    }
+
+
+    /**
+     * ------以下为小程序接口------
+     **/
+
+    /**
+     * @Explain 获取景点列表
+     */
+    @ResponseBody
+    @RequestMapping("/getAttractionlist")
+    public Object getAttractionlist() {
+        List<Attraction> attractionList = attractionService.getList("%");
+        for (Attraction attraction : attractionList) {
+            List<Image> imageList = imageService.getList(attraction.getId(), "attraction");
+            attraction.setImageList(imageList);
+            attraction.setHidden(true);
+        }
+        return Result.success(attractionList);
+    }
+
+    /**
+     * @Explain 获取推送列表
+     */
+    @ResponseBody
+    @RequestMapping("/getRecommendList")
+    public Object getRecommendList() {
+        List<Attraction> attractionList = attractionService.getRecommendList();     //推送人流量最少的前五
+        for (Attraction attraction : attractionList) {
+            List<Image> imageList = imageService.getList(attraction.getId(), "attraction");
+            attraction.setImageList(imageList);
+            attraction.setHidden(true);
+        }
+        return Result.success(attractionList);
+    }
+
+    /**
+     * @Explain 获取打卡点列表
+     */
+    @ResponseBody
+    @RequestMapping("/getPunchlist")
+    public Object getPunchlist(String wxid) {
+        List<Attraction> attractionList = attractionService.getList("%");
+        for (Attraction attraction : attractionList) {
+            List<Image> imageList = imageService.getList(attraction.getId(), "attraction");
+            PunchLog punchLog = punchLogService.getOne(attraction.getId(), wxid);
+            if (punchLog != null) {
+                attraction.setPunch(true);
+            } else {
+                attraction.setPunch(false);
+            }
+            attraction.setImageList(imageList);
+            attraction.setHidden(true);
+        }
+        return Result.success(attractionList);
+    }
+
+    /**
+     * @Explain 获取景点详情
+     * @param  id 景点ID
+     * @Return
+     */
+    @ResponseBody
+    @RequestMapping("/getAttractionDetail")
+    public Object getAttractionDetail(Integer id, String wxId) {
+        Attraction attraction = attractionService.getOne(id);
+        Favorite favorite = favoriteService.getOne(attraction.getId(), wxId);
+        if (favorite != null) {
+            attraction.setLike(true);   //如果收藏表里面有记录，说明收藏过这个景点
+        } else {
+            attraction.setLike(false);  //否则没收藏过
+        }
+        List<Image> imageList = imageService.getList(attraction.getId(), "attraction");
+        List<Sharing> sharingList = sharingService.getList(attraction.getId());
+        for (Sharing sharing : sharingList) {
+            User user = userService.getOne(sharing.getWxid());
+            sharing.setUser(user);  //设置发布人
+            List<Image> images = imageService.getList(sharing.getId(), "comment");
+            sharing.setImageList(images);
+        }
+        attraction.setSharingList(sharingList);
+        attraction.setImageList(imageList);
+        return Result.success(attraction);
+    }
+
+    /**
+     * @Explain 打卡
+     */
+    @ResponseBody
+    @RequestMapping("/doPunch")
+    public Object doPunch(PunchLog punchLog) {
+        punchLogService.addPunchLog(punchLog);      //添加打卡记录
+        Attraction attraction = attractionService.getOne(punchLog.getAttractionid());
+        attraction.setPunchnum(attraction.getPunchnum() + 1);       //打卡数+1
+        attractionService.editAttraction(attraction);
+        return Result.success();
     }
 }

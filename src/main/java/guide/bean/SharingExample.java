@@ -1,16 +1,17 @@
 package guide.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class ImageExample {
+public class SharingExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ImageExample() {
+    public SharingExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,203 +165,263 @@ public class ImageExample {
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeIsNull() {
-            addCriterion("originType is null");
+        public Criteria andAttractionidIsNull() {
+            addCriterion("attractionId is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeIsNotNull() {
-            addCriterion("originType is not null");
+        public Criteria andAttractionidIsNotNull() {
+            addCriterion("attractionId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeEqualTo(String value) {
-            addCriterion("originType =", value, "origintype");
+        public Criteria andAttractionidEqualTo(Integer value) {
+            addCriterion("attractionId =", value, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeNotEqualTo(String value) {
-            addCriterion("originType <>", value, "origintype");
+        public Criteria andAttractionidNotEqualTo(Integer value) {
+            addCriterion("attractionId <>", value, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeGreaterThan(String value) {
-            addCriterion("originType >", value, "origintype");
+        public Criteria andAttractionidGreaterThan(Integer value) {
+            addCriterion("attractionId >", value, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeGreaterThanOrEqualTo(String value) {
-            addCriterion("originType >=", value, "origintype");
+        public Criteria andAttractionidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("attractionId >=", value, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeLessThan(String value) {
-            addCriterion("originType <", value, "origintype");
+        public Criteria andAttractionidLessThan(Integer value) {
+            addCriterion("attractionId <", value, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeLessThanOrEqualTo(String value) {
-            addCriterion("originType <=", value, "origintype");
+        public Criteria andAttractionidLessThanOrEqualTo(Integer value) {
+            addCriterion("attractionId <=", value, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeLike(String value) {
-            addCriterion("originType like", value, "origintype");
+        public Criteria andAttractionidIn(List<Integer> values) {
+            addCriterion("attractionId in", values, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeNotLike(String value) {
-            addCriterion("originType not like", value, "origintype");
+        public Criteria andAttractionidNotIn(List<Integer> values) {
+            addCriterion("attractionId not in", values, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeIn(List<String> values) {
-            addCriterion("originType in", values, "origintype");
+        public Criteria andAttractionidBetween(Integer value1, Integer value2) {
+            addCriterion("attractionId between", value1, value2, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeNotIn(List<String> values) {
-            addCriterion("originType not in", values, "origintype");
+        public Criteria andAttractionidNotBetween(Integer value1, Integer value2) {
+            addCriterion("attractionId not between", value1, value2, "attractionid");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeBetween(String value1, String value2) {
-            addCriterion("originType between", value1, value2, "origintype");
+        public Criteria andWxidIsNull() {
+            addCriterion("wxId is null");
             return (Criteria) this;
         }
 
-        public Criteria andOrigintypeNotBetween(String value1, String value2) {
-            addCriterion("originType not between", value1, value2, "origintype");
+        public Criteria andWxidIsNotNull() {
+            addCriterion("wxId is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidIsNull() {
-            addCriterion("originId is null");
+        public Criteria andWxidEqualTo(String value) {
+            addCriterion("wxId =", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidIsNotNull() {
-            addCriterion("originId is not null");
+        public Criteria andWxidNotEqualTo(String value) {
+            addCriterion("wxId <>", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidEqualTo(Integer value) {
-            addCriterion("originId =", value, "originid");
+        public Criteria andWxidGreaterThan(String value) {
+            addCriterion("wxId >", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidNotEqualTo(Integer value) {
-            addCriterion("originId <>", value, "originid");
+        public Criteria andWxidGreaterThanOrEqualTo(String value) {
+            addCriterion("wxId >=", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidGreaterThan(Integer value) {
-            addCriterion("originId >", value, "originid");
+        public Criteria andWxidLessThan(String value) {
+            addCriterion("wxId <", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("originId >=", value, "originid");
+        public Criteria andWxidLessThanOrEqualTo(String value) {
+            addCriterion("wxId <=", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidLessThan(Integer value) {
-            addCriterion("originId <", value, "originid");
+        public Criteria andWxidLike(String value) {
+            addCriterion("wxId like", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidLessThanOrEqualTo(Integer value) {
-            addCriterion("originId <=", value, "originid");
+        public Criteria andWxidNotLike(String value) {
+            addCriterion("wxId not like", value, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidIn(List<Integer> values) {
-            addCriterion("originId in", values, "originid");
+        public Criteria andWxidIn(List<String> values) {
+            addCriterion("wxId in", values, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidNotIn(List<Integer> values) {
-            addCriterion("originId not in", values, "originid");
+        public Criteria andWxidNotIn(List<String> values) {
+            addCriterion("wxId not in", values, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidBetween(Integer value1, Integer value2) {
-            addCriterion("originId between", value1, value2, "originid");
+        public Criteria andWxidBetween(String value1, String value2) {
+            addCriterion("wxId between", value1, value2, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andOriginidNotBetween(Integer value1, Integer value2) {
-            addCriterion("originId not between", value1, value2, "originid");
+        public Criteria andWxidNotBetween(String value1, String value2) {
+            addCriterion("wxId not between", value1, value2, "wxid");
             return (Criteria) this;
         }
 
-        public Criteria andUrlIsNull() {
-            addCriterion("url is null");
+        public Criteria andContentIsNull() {
+            addCriterion("content is null");
             return (Criteria) this;
         }
 
-        public Criteria andUrlIsNotNull() {
-            addCriterion("url is not null");
+        public Criteria andContentIsNotNull() {
+            addCriterion("content is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUrlEqualTo(String value) {
-            addCriterion("url =", value, "url");
+        public Criteria andContentEqualTo(String value) {
+            addCriterion("content =", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotEqualTo(String value) {
-            addCriterion("url <>", value, "url");
+        public Criteria andContentNotEqualTo(String value) {
+            addCriterion("content <>", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlGreaterThan(String value) {
-            addCriterion("url >", value, "url");
+        public Criteria andContentGreaterThan(String value) {
+            addCriterion("content >", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("url >=", value, "url");
+        public Criteria andContentGreaterThanOrEqualTo(String value) {
+            addCriterion("content >=", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLessThan(String value) {
-            addCriterion("url <", value, "url");
+        public Criteria andContentLessThan(String value) {
+            addCriterion("content <", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLessThanOrEqualTo(String value) {
-            addCriterion("url <=", value, "url");
+        public Criteria andContentLessThanOrEqualTo(String value) {
+            addCriterion("content <=", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlLike(String value) {
-            addCriterion("url like", value, "url");
+        public Criteria andContentLike(String value) {
+            addCriterion("content like", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotLike(String value) {
-            addCriterion("url not like", value, "url");
+        public Criteria andContentNotLike(String value) {
+            addCriterion("content not like", value, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlIn(List<String> values) {
-            addCriterion("url in", values, "url");
+        public Criteria andContentIn(List<String> values) {
+            addCriterion("content in", values, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotIn(List<String> values) {
-            addCriterion("url not in", values, "url");
+        public Criteria andContentNotIn(List<String> values) {
+            addCriterion("content not in", values, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlBetween(String value1, String value2) {
-            addCriterion("url between", value1, value2, "url");
+        public Criteria andContentBetween(String value1, String value2) {
+            addCriterion("content between", value1, value2, "content");
             return (Criteria) this;
         }
 
-        public Criteria andUrlNotBetween(String value1, String value2) {
-            addCriterion("url not between", value1, value2, "url");
+        public Criteria andContentNotBetween(String value1, String value2) {
+            addCriterion("content not between", value1, value2, "content");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeIsNull() {
+            addCriterion("publishTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeIsNotNull() {
+            addCriterion("publishTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeEqualTo(Date value) {
+            addCriterion("publishTime =", value, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeNotEqualTo(Date value) {
+            addCriterion("publishTime <>", value, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeGreaterThan(Date value) {
+            addCriterion("publishTime >", value, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("publishTime >=", value, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeLessThan(Date value) {
+            addCriterion("publishTime <", value, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeLessThanOrEqualTo(Date value) {
+            addCriterion("publishTime <=", value, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeIn(List<Date> values) {
+            addCriterion("publishTime in", values, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeNotIn(List<Date> values) {
+            addCriterion("publishTime not in", values, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeBetween(Date value1, Date value2) {
+            addCriterion("publishTime between", value1, value2, "publishtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andPublishtimeNotBetween(Date value1, Date value2) {
+            addCriterion("publishTime not between", value1, value2, "publishtime");
             return (Criteria) this;
         }
     }

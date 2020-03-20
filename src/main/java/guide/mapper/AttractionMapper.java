@@ -2,8 +2,9 @@ package guide.mapper;
 
 import guide.bean.Attraction;
 import guide.bean.AttractionExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AttractionMapper {
     long countByExample(AttractionExample example);
@@ -27,4 +28,6 @@ public interface AttractionMapper {
     int updateByPrimaryKeySelective(Attraction record);
 
     int updateByPrimaryKey(Attraction record);
+
+    List<Attraction> getRecommendList();
 }

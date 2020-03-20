@@ -3,7 +3,6 @@ package guide.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import guide.bean.Attraction;
-import guide.bean.Image;
 import guide.bean.Navigation;
 import guide.dto.Result;
 import guide.service.AttractionService;
@@ -39,7 +38,9 @@ public class RouteController {
      * 跳转景点管理页
      */
     @RequestMapping("/toRoute")
-    public String toAttraction() {
+    public String toAttraction(Model model) {
+        List<Attraction> attractionList = attractionService.getList("%");
+        model.addAttribute("attractionList", attractionList);
         return "route";
     }
 
@@ -55,9 +56,11 @@ public class RouteController {
     public Object routeList(@RequestParam(value = "current", defaultValue = "1") Integer pn,
                             @RequestParam(value = "size", defaultValue = "10") Integer size,
                             @RequestParam(value = "sort", defaultValue = "id") String sort,
-                            @RequestParam(value = "order", defaultValue = "desc") String order) {
+                            @RequestParam(value = "order", defaultValue = "desc") String order,
+                            @RequestParam(value = "startid", required = false) Integer startid,
+                            @RequestParam(value = "endid", required = false) Integer endid) {
         PageHelper.startPage(pn, size, sort + " " + order);     //pn:页码  size：页大小
-        List<Navigation> navigationList = navigationService.getList();
+        List<Navigation> navigationList = navigationService.getList(startid, endid);
         for (Navigation navigation : navigationList) {
             Attraction startAttraction = attractionService.getOne(navigation.getStartid());
             navigation.setStartName(startAttraction.getTitle());     //起点名称
@@ -76,7 +79,7 @@ public class RouteController {
             model.addAttribute("navigation", navigation);
         }
         //查出景点列表
-        List<Attraction> attractionList = attractionService.getList();
+        List<Attraction> attractionList = attractionService.getList("%");
         model.addAttribute("attractionList", attractionList);
         return "manageRoute";
     }
@@ -89,7 +92,7 @@ public class RouteController {
     @ResponseBody
     @RequestMapping("/manageRoute")
     public Object manageRoute(Navigation navigation,
-                                   @RequestParam(value = "files", required = false) MultipartFile[] files) {
+                              @RequestParam(value = "files", required = false) MultipartFile[] files) {
         int res;
         if (!ArrayUtils.isEmpty(files)) {
             for (MultipartFile myFile : files) {
@@ -114,4 +117,21 @@ public class RouteController {
         }
         return res > 0 ? Result.success() : Result.error("操作失败");
     }
+
+
+    /**
+     * ------以下为小程序接口------
+     **/
+
+    @ResponseBody
+    @RequestMapping("/getRoute")
+    public Object getRoute(Navigation navigation) {
+        Navigation route = navigationService.getRoute(navigation);
+        if (route != null) {
+            return Result.success(route);
+        } else {
+            return Result.error("暂未查到该路线");
+        }
+    }
+
 }

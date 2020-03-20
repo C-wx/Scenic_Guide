@@ -1,13 +1,11 @@
 package guide.bean;
 
-public class Favorite {
+public class PunchLog {
     private Integer id;
 
     private String wxid;
 
     private Integer attractionid;
-
-    private Attraction attraction;
 
     public Integer getId() {
         return id;
@@ -31,13 +29,5 @@ public class Favorite {
 
     public void setAttractionid(Integer attractionid) {
         this.attractionid = attractionid;
-    }
-
-    public Attraction getAttraction() {
-        return attraction;
-    }
-
-    public void setAttraction(Attraction attraction) {
-        this.attraction = attraction;
     }
 }

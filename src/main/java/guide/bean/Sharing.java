@@ -1,5 +1,6 @@
 package guide.bean;
 
+import java.util.Date;
 import java.util.List;
 
 public class Sharing {
@@ -11,9 +12,13 @@ public class Sharing {
 
     private String content;
 
+    private Date publishtime;
+
     private User user;  //发布者
 
     private List<Image> imageList;  //评论图片列表
+
+    private Attraction attraction;  //发布源
 
     public Integer getId() {
         return id;
@@ -47,6 +52,14 @@ public class Sharing {
         this.content = content == null ? null : content.trim();
     }
 
+    public Date getPublishtime() {
+        return publishtime;
+    }
+
+    public void setPublishtime(Date publishtime) {
+        this.publishtime = publishtime;
+    }
+
     public User getUser() {
         return user;
     }
@@ -61,5 +74,13 @@ public class Sharing {
 
     public void setImageList(List<Image> imageList) {
         this.imageList = imageList;
+    }
+
+    public Attraction getAttraction() {
+        return attraction;
+    }
+
+    public void setAttraction(Attraction attraction) {
+        this.attraction = attraction;
     }
 }

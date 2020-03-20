@@ -250,4 +250,8 @@
       currentNum = #{currentnum,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getRecommendList" resultType="guide.bean.Attraction">
+    SELECT * FROM `attractions` ORDER BY currentNum ASC LIMIT 5
+  </select>
 </mapper>

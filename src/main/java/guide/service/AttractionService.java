@@ -2,9 +2,7 @@ package guide.service;
 
 import guide.bean.Attraction;
 import guide.bean.AttractionExample;
-import guide.bean.Navigation;
 import guide.mapper.AttractionMapper;
-import guide.mapper.NavigationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +21,9 @@ public class AttractionService {
     private AttractionMapper attractionMapper;
 
 
-    public List<Attraction> getList() {
+    public List<Attraction> getList(String title) {
         AttractionExample attractionExample = new AttractionExample();
+        attractionExample.createCriteria().andTitleLike("%" + title + "%");
         attractionExample.setOrderByClause("ID DESC");
         return attractionMapper.selectByExample(attractionExample);
     }
@@ -45,4 +44,7 @@ public class AttractionService {
         return attractionMapper.insertSelective(attraction);
     }
 
+    public List<Attraction> getRecommendList() {
+        return attractionMapper.getRecommendList();
+    }
 }
