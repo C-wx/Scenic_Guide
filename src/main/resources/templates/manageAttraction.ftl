@@ -26,6 +26,7 @@
                     <h2 style="letter-spacing: 5px">
                         北墘导览后台
                     </h2>
+                    <span style="margin-left: 630px;font-size: 20px"><i class="fa fa-user-circle-o"></i> 管理员 <a href="/logout" class="fa  fa-sign-out"></a></span>
                 </span>
             </div>
         </nav>
@@ -77,7 +78,7 @@
                                         <div id ="d_${image_index}" style="float:left;margin-left:20px;" class="imageHover">
                                             <input id="file_${image_index}" type="file" name="files" style="display:none;" onChange="replace_image(${image_index})"/>
                                             <img id="image_${image_index}"  onclick="click_image(${image_index})" style="cursor:pointer;" src="${image.url}" height="200px" width="300px"/>
-                                            <i class="fa fa-remove" style="display: none;font-size: 20px;cursor: pointer" onclick="delImage(${image.id})"></i>
+                                            <i class="fa fa-remove" style="display: none;font-size: 20px;cursor: pointer;color: #f00;" onclick="delImage(${image.id})"></i>
                                         </div>
                                     </#list>
                                     <#if attraction.imageList?size < 3>

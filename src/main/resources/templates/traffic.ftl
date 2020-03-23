@@ -26,6 +26,7 @@
                     <h2 style="letter-spacing: 5px">
                         北墘导览后台
                     </h2>
+                    <span style="margin-left: 630px;font-size: 20px"><i class="fa fa-user-circle-o"></i> 管理员 <a href="/logout" class="fa  fa-sign-out"></a></span>
                 </span>
             </div>
         </nav>
@@ -53,12 +54,12 @@
                                 <div class="layui-inline">
                                     <input class="layui-input" id="title" autocomplete="off">
                                 </div>
-                                <span style="margin-left: 50px">
-                                    <button class="layui-btn layuiadmin-btn-forum-list" data-type="keyLike">
-                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                <span style="margin-left: 20px">
+                                    <button class="layui-btn layui-btn-normal layui-btn-radius" data-type="keyLike">
+                                        搜索
                                     </button>
-                                    <button class="layui-btn layui-btn-primary" data-type="reload">
-                                        <i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i>
+                                    <button class="layui-btn layui-btn-warm layui-btn-radius" data-type="reload">
+                                        重置
                                     </button>
                                 </span>
                             </div>

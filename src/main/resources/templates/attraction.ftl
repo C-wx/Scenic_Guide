@@ -26,6 +26,7 @@
                     <h2 style="letter-spacing: 5px">
                         北墘导览后台
                     </h2>
+                    <span style="margin-left: 630px;font-size: 20px"><i class="fa fa-user-circle-o"></i> 管理员 <a href="/logout" class="fa  fa-sign-out"></a></span>
                 </span>
             </div>
         </nav>
@@ -34,7 +35,7 @@
         <div class="scroll-sidebar">
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link active" href="/toMerchant"><i class="fa fa-globe"></i><span class="hide-menu">景点管理</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link active" href="/toAttraction"><i class="fa fa-globe"></i><span class="hide-menu">景点管理</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/toRoute"><i class="fa fa-location-arrow"></i><span class="hide-menu">路线管理</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/toTraffic"><i class="fa fa-line-chart"></i><span class="hide-menu">人流管理</span></a></li>
                 </ul>
@@ -53,12 +54,12 @@
                                 <div class="layui-inline">
                                     <input class="layui-input" id="title" autocomplete="off">
                                 </div>
-                                <span style="margin-left: 50px">
-                                    <button class="layui-btn layuiadmin-btn-forum-list" data-type="keyLike">
-                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                <span style="margin-left: 20px">
+                                    <button class="layui-btn layui-btn-normal layui-btn-radius" data-type="keyLike">
+                                        搜索
                                     </button>
-                                    <button class="layui-btn layui-btn-primary" data-type="reload">
-                                        <i class="layui-icon layui-icon-refresh layuiadmin-button-btn"></i>
+                                    <button class="layui-btn layui-btn-warm layui-btn-radius" data-type="reload">
+                                        重置
                                     </button>
                                 <button class="layui-btn layui-btn-danger" type="button" onclick="doAdd()">录入景点</button>
                                 </span>

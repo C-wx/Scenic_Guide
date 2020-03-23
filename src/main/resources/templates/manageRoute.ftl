@@ -26,6 +26,7 @@
                     <h2 style="letter-spacing: 5px">
                         北墘导览后台
                     </h2>
+                    <span style="margin-left: 630px;font-size: 20px"><i class="fa fa-user-circle-o"></i> 管理员 <a href="/logout" class="fa  fa-sign-out"></a></span>
                 </span>
             </div>
         </nav>
